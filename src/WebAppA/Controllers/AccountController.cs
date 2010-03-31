@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using WebAppA.Models;
+using WebCore;
 
 namespace WebAppA.Controllers
 {
@@ -22,7 +23,10 @@ namespace WebAppA.Controllers
         protected override void Initialize(RequestContext requestContext)
         {
             if (FormsService == null) { FormsService = new FormsAuthenticationService(); }
-            if (MembershipService == null) { MembershipService = new AccountMembershipService(); }
+            if (MembershipService == null)
+            {
+                MembershipService = new AccountMembershipService(new MockMembershipProvider());
+            }
 
             base.Initialize(requestContext);
         }

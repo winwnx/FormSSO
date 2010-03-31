@@ -11,6 +11,8 @@ namespace MainWeb.Controllers
     {
         public ActionResult Index()
         {
+            var t1 = Request.IsAuthenticated;
+            var t2 = this.User.Identity.Name;
             ViewData["Message"] = "Welcome to ASP.NET MVC!";
 
             return View();
